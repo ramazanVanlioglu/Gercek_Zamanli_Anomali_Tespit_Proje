@@ -1,0 +1,30 @@
+/* App.css içine ekle veya güncelle */
+body { background-color: #111827; color: #e5e7eb; font-family: 'Segoe UI', sans-serif; }
+.app-container { padding: 20px; transition: background 0.3s; }
+.alert-mode { background-color: #3f1212; } /* Arkaplan hafif kırmızı olur */
+
+.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+.panel { background: #1f2937; padding: 20px; border-radius: 12px; border: 1px solid #374151; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { text-align: left; color: #9ca3af; padding-bottom: 10px; border-bottom: 1px solid #374151; }
+td { padding: 8px 0; border-bottom: 1px solid #374151; }
+
+.row-danger { color: #f87171; background: rgba(248, 113, 113, 0.1); }
+.row-safe { color: #d1d5db; }
+
+/* Badges */
+.badge { padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+.badge-blue { background: #1e3a8a; color: #93c5fd; } /* Gatekeeper rengi */
+.badge-purple { background: #581c87; color: #d8b4fe; } /* Expert rengi */
+
+.conf-text { font-size: 0.75rem; opacity: 0.8; }
+
+/* Popup */
+.popup-alert {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: #ef4444; color: white; padding: 20px 40px;
+  border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  animation: slideUp 0.3s ease-out; text-align: center; border: 2px solid white;
+}
+@keyframes slideUp { from { bottom: -100px; } to { bottom: 30px; } }
