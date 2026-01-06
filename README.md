@@ -11,3 +11,6 @@ To create and push this repo to GitHub, use the PowerShell script `create_github
 # Machine Learning
 We've used two machine learning models: One of them is RandomForest and the other one is XGBoost algorithm. First, we identify the package whether it is benign or anomaly with Random Forest model
 If there is an anomaly situation, then our second model takes turn and identifies what kind of anomaly does the package have.
+
+P.S. you might want to add these libraries in order to execute the project:
+npm install recharts lucide-react
