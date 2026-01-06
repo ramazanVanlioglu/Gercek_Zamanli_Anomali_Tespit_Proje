@@ -1,30 +1,319 @@
-/* App.css içine ekle veya güncelle */
-body { background-color: #111827; color: #e5e7eb; font-family: 'Segoe UI', sans-serif; }
-.app-container { padding: 20px; transition: background 0.3s; }
-.alert-mode { background-color: #3f1212; } /* Arkaplan hafif kırmızı olur */
+/* src/App.css */
 
-.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-.panel { background: #1f2937; padding: 20px; border-radius: 12px; border: 1px solid #374151; }
+/* =========================================
+   BÖLÜM 1: LOGIN EKRANI STİLLERİ
+   (Giriş yapılmadan önceki açık renkli ekran)
+   ========================================= */
 
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th { text-align: left; color: #9ca3af; padding-bottom: 10px; border-bottom: 1px solid #374151; }
-td { padding: 8px 0; border-bottom: 1px solid #374151; }
-
-.row-danger { color: #f87171; background: rgba(248, 113, 113, 0.1); }
-.row-safe { color: #d1d5db; }
-
-/* Badges */
-.badge { padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
-.badge-blue { background: #1e3a8a; color: #93c5fd; } /* Gatekeeper rengi */
-.badge-purple { background: #581c87; color: #d8b4fe; } /* Expert rengi */
-
-.conf-text { font-size: 0.75rem; opacity: 0.8; }
-
-/* Popup */
-.popup-alert {
-  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-  background: #ef4444; color: white; padding: 20px 40px;
-  border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  animation: slideUp 0.3s ease-out; text-align: center; border: 2px solid white;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5; /* Login için açık gri */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-@keyframes slideUp { from { bottom: -100px; } to { bottom: 30px; } }
+
+.login-box {
+  width: 350px;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.lock-message {
+  color: orange;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   BÖLÜM 2: DASHBOARD (PANEL) STİLLERİ
+   (Giriş yapıldıktan sonraki koyu tema)
+   ========================================= */
+
+/* Genel Ayarlar */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0f172a; /* Koyu Lacivert */
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+/* Saldırı Anı Kırmızı Arka Plan */
+.app-container.alert-mode {
+  background-color: #450a0a;
+}
+
+/* --- Header --- */
+.header {
+  height: 60px;
+  border-bottom: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #1e293b;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.alert-badge {
+  background-color: #dc2626;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulse 1s infinite;
+}
+
+/* --- Ana Yapı (Grid) --- */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sol Panel */
+.sidebar {
+  width: 350px;
+  border-right: 1px solid #334155;
+  background-color: rgba(30, 41, 59, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  padding: 15px;
+  border-bottom: 1px solid #334155;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1e293b;
+  margin: 0;
+}
+
+.flow-list {
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.flow-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.flow-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.label-normal { color: #86efac; background: #14532d; padding: 2px 6px; border-radius: 4px; }
+.label-attack { color: #fca5a5; background: #7f1d1d; padding: 2px 6px; border-radius: 4px; }
+
+.flow-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: monospace;
+  margin-bottom: 5px;
+}
+
+.flow-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.model-badge {
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Sağ Taraf */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.charts-section {
+  height: 50%;
+  display: flex;
+  border-bottom: 1px solid #334155;
+}
+
+.chart-box {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-box:first-child {
+  border-right: 1px solid #334155;
+}
+
+/* Alt Tablo */
+.attacks-section {
+  height: 50%;
+  padding: 15px;
+  background-color: rgba(30, 41, 59, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.attacks-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.attacks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.attacks-table th {
+  text-align: left;
+  padding: 10px;
+  background-color: #334155;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.attacks-table td {
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+}
+
+/* Pop-up */
+.popup-alert {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background-color: #dc2626;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 100;
+  border: 2px solid #f87171;
+  animation: bounce 1s infinite;
+}
+
+.popup-btn {
+  background: white;
+  color: #dc2626;
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Animasyonlar */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
