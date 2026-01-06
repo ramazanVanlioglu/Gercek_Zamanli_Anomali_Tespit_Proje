@@ -1,4 +1,4 @@
-# bitirme_anomali_tespit
+# bitirme_anomali_tespit ~ Made by Abdullah ÖZDEMİR, Ramazan VANLIOĞLU.
 
 This repository contains a thesis project for anomaly detection. It includes a Python server, a React security dashboard frontend in the `security-dashboard` folder, and supporting files.
 
